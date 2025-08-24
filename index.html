@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Θεραπευτικές Συχνότητες</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f7f5;
+      color: white;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    header h1 {
+      font-size: 40px;
+    }
+
+    .lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    /* Αριστερή στήλη (κύριο περιεχόμενο) */
+    .left-column {
+      flex: 2;
+      min-width: 0; /* για σωστή συμπεριφορά overflow */
+    }
+
+    /* Δεξιά στήλη (προσωπικά κείμενα) */
+    .right-column {
+      flex: 1;
+      background: #f4f4f4;
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 400px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    h2 {
+      color: #2c7;
+    }
+
+    .subscribe-button {
+      background-color: #2c7;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+
+    .audio-item {
+      margin-bottom: 25px;
+    }
+
+    img.theory-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    /* Στυλ για τα προσωπικά κείμενα */
+    #customTexts p {
+      background: white;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    #customTexts p button {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      background: #c33;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 12px;
+    }
+
+    #customTexts p button.edit-btn {
+      background: #28a745;
+      right: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Επιλογή γλώσσας -->
+  <div class="lang-switcher">
+    <select id="languageSelector" onchange="changeLanguage(this.value)">
+      <option value="el">Ελληνικά</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <!-- Εικόνα εξωφύλλου -->
+  <header>
+    <h1 data-i18n="title">🎵 Θεραπευτικές Συχνότητες</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Αριστερή στήλη με το κύριο περιεχόμενο -->
+    <div class="left-column">
+
+      <!-- Επιλογή φόντου -->
+      <label for="bgSelector">🖼 Επιλογή φόντου:</label>
+      <select id="bgSelector" onchange="changeBackground(this.value)">
+        <option value="banner.jpg">banner.jpg</option>
+        <option value="nature.jpg">nature.jpg</option>
+        <option value="light.jpg">light.jpg</option>
+      </select>
+
+      <p data-i18n="intro">
+        Ανακάλυψε τον μαγικό κόσμο των θεραπευτικών συχνοτήτων. Οι ήχοι αυτοί βοηθούν στην εξισορρόπηση της ενέργειας, την πνευματική ανάταση και τη βαθιά χαλάρωση.
+      </p>
+
+      <h2 data-i18n="benefits_title">🧠 Θεωρίες & Οφέλη</h2>
+      <p data-i18n="benefits_text">
+        Οι θεραπευτικές συχνότητες βασίζονται στην ιδέα ότι κάθε κύτταρο και όργανο πάλλεται σε μια συγκεκριμένη συχνότητα. Όταν διαταράσσεται η ισορροπία, εμφανίζονται δυσλειτουργίες. Με ήχους συγκεκριμένων συχνοτήτων μπορούμε να επαναφέρουμε την αρμονία.
+      </p>
+
+      <ul>
+        <li>396 Hz – <span data-i18n="f396">Απελευθέρωση φόβου</span></li>
+        <li>417 Hz – <span data-i18n="f417">Αλλαγή & Νέες Αρχές</span></li>
+        <li>432 Hz – <span data-i18n="f432">Φυσική Αρμονία</span></li>
+        <li>528 Hz – <span data-i18n="f528">Αγάπη και επανόρθωση DNA</span></li>
+        <li>639 Hz – <span data-i18n="f639">Ενίσχυση Σχέσεων</span></li>
+      </ul>
+
+      <img src="images/frequencies_chart.jpg" alt="Θεραπευτικές Συχνότητες" class="theory-img">
+
+      <h2 data-i18n="audio_title">🔊 Δείγματα Ήχου</h2>
+
+<div class="audio-item">
+  <p>semaglutid</p>
+  <audio controls preload="auto">
+    <source src="samples/semaglutid_sample.mp3" type="audio/mpeg">
+    Ο browser σου δεν υποστηρίζει audio.
+  </audio>
+</div>
+
+<div class="audio-item">
+  <p>528Hz</p>
+  <audio controls preload="auto">
+    <source src="samples/528hz_sample.mp3" type="audio/mpeg">
+    Ο browser σου δεν υποστηρίζει audio.
+  </audio>
+</div>
+
+<div class="audio-item">
+  <p>432Hz</p>
+  <audio controls preload="auto">
+    <source src="samples/432hz_sample.mp3" type="audio/mpeg">
+    Ο browser σου δεν υποστηρίζει audio.
+  </audio>
+</div>
+
+<div class="audio-item">
+  <p>396Hz</p>
+  <audio controls preload="auto">
+    <source src="samples/396hz_sample.mp3" type="audio/mpeg">
+    Ο browser σου δεν υποστηρίζει audio.
+  </audio>
+</div>
+
+
+    <!-- Δεξιά στήλη για προσωπικά κείμενα -->
+    <div class="right-column">
+      <h3>✏️ Πρόσθεσε προσωπικό κείμενο</h3>
+      <input type="text" id="customTextInput" placeholder="Γράψε κάτι..." style="padding: 8px; width: 100%; box-sizing: border-box; margin-bottom: 10px;">
+      <button onclick="addCustomText()" style="padding: 8px 16px; width: 100%;">Προσθήκη</button>
+
+      <h4 style="margin-top: 20px;">📌 Τα κείμενά σου:</h4>
+      <div id="customTexts"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const translations = {
+      el: {
+        title: "🎵 Θεραπευτικές Συχνότητες",
+        intro: "Ανακάλυψε τον μαγικό κόσμο των θεραπευτικών συχνοτήτων...",
+        benefits_title: "🧠 Θεωρίες & Οφέλη",
+        benefits_text: "Οι θεραπευτικές συχνότητες βασίζονται στην ιδέα ότι κάθε κύτταρο και όργανο πάλλεται σε μια συγκεκριμένη συχνότητα...",
+        f396: "Απελευθέρωση φόβου",
+        f417: "Αλλαγή & Νέες Αρχές",
+        f432: "Φυσική Αρμονία",
+        f528: "Αγάπη και επανόρθωση DNA",
+        f639: "Ενίσχυση Σχέσεων",
+        audio_title: "🔊 Δείγματα Ήχου",
+        subscribe_section_title: "💫 Γίνε Συνδρομητής",
+        subscribe_text: "Με 3€ τον χρόνο αποκτάς απεριόριστη πρόσβαση στη συλλογή μας από θεραπευτικούς ήχους.",
+        subscribe_button: "ΔΩΡΙΣΕ ΕΝΑ ΚΑΦΕ"
+      },
+      en: {
+        title: "🎵 Healing Frequencies",
+        intro: "Discover the magical world of healing frequencies...",
+        benefits_title: "🧠 Theories & Benefits",
+        benefits_text: "Healing frequencies are based on the idea that each cell and organ resonates at a specific frequency...",
+        f396: "Release of Fear",
+        f417: "Change & New Beginnings",
+        f432: "Natural Harmony",
+        f528: "Love & DNA Repair",
+        f639: "Relationship Enhancement",
+        audio_title: "🔊 Sound Samples",
+        subscribe_section_title: "💫 Become a Subscriber",
+        subscribe_text: "Only €3/year for full access to our healing sound collection.",
+        subscribe_button: "Buy Subscription"
+      }
+    };
+
+    function changeLanguage(lang) {
+      localStorage.setItem('preferredLanguage', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    function changeBackground(imageFile) {
+      localStorage.setItem('bgImage', imageFile);
+      document.body.style.backgroundImage = `url('images/${imageFile}')`;
+    }
+
+    // Προσθήκη νέου κειμένου
+    function addCustomText() {
+      const input = document.getElementById('customTextInput');
+      const container = document.getElementById('customTexts');
+      const text = input.value.trim();
+      if (text === '') return;
+
+      // Δημιουργία παραγράφου με κείμενο + κουμπιά επεξεργασίας και διαγραφής
+      const p = document.createElement('p');
+      p.textContent = text;
+
+      // Κουμπί επεξεργασίας
+      const editBtn = document.createElement('button');
+      editBtn.textContent = '✏️';
+      editBtn.classList.add('edit-btn');
+      editBtn.title = "Επεξεργασία";
+      editBtn.onclick = () => editCustomText(p);
+
+      // Κουμπί διαγραφής
+      const delBtn = document.createElement('button');
+      delBtn.textContent = '🗑️';
+      delBtn.title = "Διαγραφή";
+      delBtn.onclick = () => {
+        container.removeChild(p);
+        saveTextsToStorage();
+      };
+
+      p.appendChild(editBtn);
+      p.appendChild(delBtn);
+
+      container.appendChild(p);
+
+      saveTextsToStorage();
+
+      input.value = '';
+    }
+
+    // Επεξεργασία κειμένου
+    function editCustomText(p) {
+      const currentText = p.firstChild.textContent;
+      const newText = prompt('Επεξεργασία κειμένου:', currentText);
+      if (newText !== null) {
+        p.firstChild.textContent = newText.trim();
+        saveTextsToStorage();
+      }
+    }
+
+    // Αποθήκευση κειμένων στο localStorage
+    function saveTextsToStorage() {
+      const container = document.getElementById('customTexts');
+      const texts = [];
+      container.querySelectorAll('p').forEach(p => {
+        // το πρώτο child node είναι το κείμενο, όχι τα κουμπιά
+        texts.push(p.firstChild.textContent);
+      });
+      localStorage.setItem('customTexts', JSON.stringify(texts));
+    }
+
+    // Φόρτωση κειμένων από localStorage
+    function loadTextsFromStorage() {
+      const saved = localStorage.getItem('customTexts');
+      if (saved) {
+        const texts = JSON.parse(saved);
+        const container = document.getElementById('customTexts');
+        texts.forEach(text => {
+          const p = document.createElement('p');
+          p.textContent = text;
+
+          const editBtn = document.createElement('button');
+          editBtn.textContent = '✏️';
+          editBtn.classList.add('edit-btn');
+          editBtn.title = "Επεξεργασία";
+          editBtn.onclick = () => editCustomText(p);
+
+          const delBtn = document.createElement('button');
+          delBtn.textContent = '🗑️';
+          delBtn.title = "Διαγραφή";
+          delBtn.onclick = () => {
+            container.removeChild(p);
+            saveTextsToStorage();
+          };
+
+          p.appendChild(editBtn);
+          p.appendChild(delBtn);
+
+          container.appendChild(p);
+        });
+      }
+    }
+
+    // Αρχικοποίηση
+    window.onload = () => {
+      // Φόρτωσε επιλεγμένη γλώσσα ή default (el)
+      const lang = localStorage.getItem('preferredLanguage') || 'el';
+      document.getElementById('languageSelector').value = lang;
+      changeLanguage(lang);
+
+      // Φόρτωσε background ή default
+      const bgImage = localStorage.getItem('bgImage') || 'banner.jpg';
+      document.getElementById('bgSelector').value = bgImage;
+      changeBackground(bgImage);
+
+      // Φόρτωσε αποθηκευμένα κείμενα
+      loadTextsFromStorage();
+    };
+  </script>
+</body>
+</html>
